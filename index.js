@@ -2,7 +2,7 @@
 const express = require ('express'); 
 // import mongoose (for connect to MangoDB)
 const mongoose = require('mongoose');
-// import file models
+// import  models file 
 const Foodie = require('./models/food_models.js');
 // create app / server 
 const app = express();
@@ -13,7 +13,10 @@ app.use(express.json());
 // route post via body
 app.post('/food', async (req, res)=>{
     try{
+        // foodies variable save import models file (Foodie)
+        // , create Database 
         const foodies = await Foodie.create(req.body);
+        // if succesed
         res.status(200).json(foodies);
     } catch (error){
         res.status(500).json({message: error.message});
