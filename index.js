@@ -14,6 +14,7 @@ app.use = (express.json());
 app.post('/food', async (req, res)=>{
     try{
         const Foodie = await Foodie.create(req.body);
+        res.status(200).json(Foodie);
     } catch (error){
         res.status(500).json({message: error.message});
     }
