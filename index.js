@@ -8,13 +8,13 @@ const Foodie = require('./models/food_models.js');
 const app = express();
 
 // middleware, for read source json from client
-app.use = (express.json());
+app.use(express.json());
 
 // route post via body
 app.post('/food', async (req, res)=>{
     try{
-        const Foodie = await Foodie.create(req.body);
-        res.status(200).json(Foodie);
+        const foodies = await Foodie.create(req.body);
+        res.status(200).json(foodies);
     } catch (error){
         res.status(500).json({message: error.message});
     }
@@ -29,7 +29,7 @@ app.post('/food', async (req, res)=>{
 app.get('/', (req, res) => {
     // res.send dan res.rediqrect gabisa digunakan barengan karena
     // hanya butuh satu respons dari server.
-    res.send("Heloo guys i'm devi");
+    res.send(req.body);
     // res.redirect("https://media.istockphoto.com/id/1443562748/id/foto/kucing-jahe-lucu.jpg?s=612x612&w=0&k=20&c=g--RaRzUgk83osyJGx88ZtoChTk3VzP8n86EQHvc7Ko=");
 });
 
